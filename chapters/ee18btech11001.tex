@@ -60,12 +60,12 @@ From Error Constant  K = 500
    \\
    M_{p} &= e^{\dfrac{-\zeta\pi}{\sqrt{1-\zeta^{2}}}} = 81.6\%
    \\
-   Phase Margin &= \phi_{M} = \tan^{-1}(\dfrac{2\zeta}{\sqrt{-2\zeta^2 + \sqrt{4\zeta^4 + 1}}})
+   \phi_{M} &= \tan^{-1}(\dfrac{2\zeta}{\sqrt{-2\zeta^2 + \sqrt{4\zeta^4 + 1}}})
 \end{align}
 
 \begin{table}[!ht]
 \centering
-\input{./Tables/ee18btech11001.tex}
+\input{./tables/ee18btech11001.tex}
 \caption{Table of Specifications}
 \label{table:ee18btech11001}
 \end{table}
@@ -84,9 +84,9 @@ Let
    a &= 0.1
    \\
    |G(j\omega_{c})| &= \frac{1}{\sqrt{a}} = 10 dB
-\end{align}
-$\omega_{c} = 5\degree$ Refer \ref{fig:ee18btech11001_fig3}
-\begin{align}
+   \\
+   \omega_{c} &= 5\degree \text{  (Refer figure \ref{fig:ee18btech11001_fig3})}
+   \\
    T &= \frac{1}{\omega_{c}\sqrt{a}}
    \\
    T &= 0.632
@@ -131,7 +131,7 @@ We place the zero at
 \end{figure}
 The following code plots the following bode plots
 \begin{lstlisting}
-    codes/ee18btech11001/ee18btech11001_1.py
+codes/ee18btech11001/ee18btech11001_1.py
 \end{lstlisting}
 
 The magnitude of $G(j\omega)$ at the new gain crossover frequency  $\omega_{c} = 1.75 rad/sec$ is 26 dB as in figure \ref{fig:ee18btech11001_fig3}.In order to have $\omega_{c}$  as the new gain crossover frequency, the lag compensator
@@ -145,12 +145,13 @@ must give an attenuation of -26db at $\omega_{c}$
     \\
     G(s)G_{c}(s) &= 12.5 \dfrac{s+0.35}{s(3s+5)(s+0.0175)} \label{eq:ee18btech11001_12}
 \end{align}
-\text{Performance Evaluation of compensators}
 
-\text{The following code plots the performance curves}
 
-\begin{lstlisting}
-    codes/ee18btech11001/ee18btech11001_2.py
+\textbf{Performance Evaluation of compensators}
+\text{\linebreak The following code plots the performance curves}
+
+\begin{lstlisting}[frame=single]
+codes/ee18btech11001/ee18btech11001_2.py
 \end{lstlisting}
 
 \begin{figure}[!ht]
@@ -168,14 +169,9 @@ must give an attenuation of -26db at $\omega_{c}$
   \label{fig:ee18btech11001_fig5}
 \end{figure}
 
-
-
-
-
-
 \begin{table}[!ht]
 \centering
-\input{./Tables/ee18btech11001_2.tex}
+\input{./tables/ee18btech11001_2.tex}
 \caption{Performance comparison}
 \label{table:ee18btech11001_2}
 \end{table}

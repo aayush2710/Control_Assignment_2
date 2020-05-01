@@ -19,9 +19,10 @@ y3 = 666.6666*((0.000215*np.exp(-19.73*t)) - ((0.000182863-0.00023862j)*np.exp((
 plt.xlabel("Time")
 plt.ylabel("Unit Step Response")
 
-plt.plot(t,y1,'b')
-plt.plot(t,y2,'red')
+plt.plot(t,np.real(y1),'b')
+plt.plot(t,np.real(y2),'red')
 plt.legend(("Uncompensated" , "Lag Compensator"))
+plt.grid()
 plt.show()
 #if using termux
 plt.savefig('./figs/ee18btech11001/ee18btech11001_3.pdf')
@@ -32,10 +33,10 @@ subprocess.run(shlex.split("termux-open ./figs/ee18btech11001/ee18btech11001_3.p
 plt.xlabel("Time")
 plt.ylabel("Unit Step Response")
 
-plt.plot(t,y1,'b')
-plt.plot(t,y3,'red')
+plt.plot(t,np.real(y1),'b')
+plt.plot(t,np.real(y3),'red')
 plt.legend(("Uncompensated" , "Lead Compensator"))
-plt.show()
+plt.grid()
 #if using termux
 plt.savefig('./figs/ee18btech11001/ee18btech11001_4.pdf')
 plt.savefig('./figs/ee18btech11001/ee18btech11001_4.eps')
