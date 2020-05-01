@@ -21,39 +21,39 @@ Solving the system shown in \ref{fig:ee18btech11001_fig1},
 
 From load-torque curve of DC Motor
 \begin{align}
-   T_{m} &=  2V_{a} - \frac{2}{3}\omega_{1}
+   \vec{T_{m}} &=  2V_{a} - \frac{2}{3}\bm{\omega_{1}}
     \label{eq:ee18btech11001_1}
 \end{align}
-Let $T_{1}$ , $\omega_{1}$,$\theta_1{}$  be the Torque, Angular velocity, Angular displacement on $J_{1}$
+Let $\vec{T_{1}}$ , $\bm{\omega_{1}}$,$\bm{\theta_1{}}$  be the Torque, Angular velocity, Angular displacement on $J_{1}$
 \begin{align}
-    T_{m} &= T_{1} + J_{1}\Ddot{\theta_{1}} + f_{1}\Dot{\theta_{1}} 
+    \vec{T_{m}} &= \vec{T_{1}} + J_{1}\bm{\Ddot{\theta_{1}}} + f_{1}\bm{\Dot{\theta_{1}}} 
     \label{eq:ee18btech11001_2}
 \end{align}
 Similarly for $J_{2}$
 \begin{align}
-    T_{2} &=  J_{2}\Ddot{\theta_{2}} + f_{2}\Dot{\theta_{2}} 
+    \vec{T_{2}} &=  J_{2}\bm{\Ddot{\theta_{2}}} + f_{2}\bm{\Dot{\theta_{2}}} 
     \label{eq:ee18btech11001_3}
     \\
-    T_{2} &= \frac{N_{2}}{N_{1}} T_{1} \label{eq:ee18btech11001_4}
+    \vec{T_{2}} &= \frac{N_{2}}{N_{1}} \bm{T_{1}} \label{eq:ee18btech11001_4}
     \\
-    \theta_{2} &= \frac{N_{1}}{N_{2}} \theta_{1} \label{eq:ee18btech11001_5}
+    \bm{\theta_{2}} &= \frac{N_{1}}{N_{2}} \bm{\theta_{1}} \label{eq:ee18btech11001_5}
 \end{align}
     
 Converting to State Space model
 \begin{align}
-    \Vec{\theta} &= \myvec{\theta_{1} \\ \theta_{2}}
+    \bm{\theta} &= \myvec{\bm{\theta_{1}} \\ \bm{\theta_{2}}}
     \\
-    3 \Vec{T_{m}} &= \myvec{3J_{1} & J_{2}}\Vec{\Ddot{\theta}}+ \myvec{3f_{1} & f_{2}}\Vec{\dot{\theta}}
+    3 \Vec{T_{m}} &= \myvec{3J_{1} & J_{2}}\bm{\Ddot{\theta}}+ \myvec{3f_{1} & f_{2}}\bm{\dot{\theta}}
     \\
-    \Vec{T_{m}} &= 2V_{a} - \myvec{\frac{2}{3} & 0}\Vec{\dot{\theta}}
+    \Vec{T_{m}} &= 2\vec{V_{a}} - \myvec{\frac{2}{3} & 0}\bm{\dot{\theta}}
     \\
-    \Vec{\theta} &= \myvec{N_{2} & N_{1}} K
+    \bm{\theta} &= \myvec{N_{2} & N_{1}} K
 \end{align}
 
 
 On solving the above State Space Model
 \begin{align}
-    V_{a} &= 6\Ddot{\theta_{2}} + 10\Dot{\theta_{2}} \label{eq:ee18btech11001_6}
+    V_{a} &= 6\bm{\Ddot{\theta_{2}}} + 10\bm{\Dot{\theta_{2}}} \label{eq:ee18btech11001_6}
 \end{align}
 
 Taking Laplace transform
