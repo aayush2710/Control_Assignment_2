@@ -24,7 +24,14 @@ From speed-torque curve of DC Motor in figure. Let $\vec{T_{m}}$ be the torque e
    \vec{T_{m}} &=  2V_{a} - \frac{2}{3}\bm{\omega_{1}}
     \label{eq:ee18btech11001_1}
 \end{align}
-Let $\vec{T_{1}}$ , $\bm{\omega_{1}}$,$\bm{\theta_1{}}$  be the Torque, Angular velocity, Angular displacement on $J_{1}$. Change in torque across ends = torque applied on load + viscous friction. On $J_{1}$ at one end torque $T_{m}$ is applied and at the other end $T_{1}$ exists.
+
+\begin{table}[!ht]
+\centering
+\input{./tables/ee18btech11001_3.tex}
+\caption{Performance comparison}
+\label{table:ee18btech11001_3}
+\end{table}
+Change in torque across ends = torque applied on load + viscous friction. On $J_{1}$ at one end torque $T_{m}$ is applied and at the other end $T_{1}$ exists.
 \begin{align}
     \vec{T_{m}} &= \vec{T_{1}} + J_{1}\bm{\Ddot{\theta_{1}}} + f_{1}\bm{\Dot{\theta_{1}}} 
     \label{eq:ee18btech11001_2}
@@ -57,9 +64,7 @@ Taking Laplace transform
 \begin{align}
    G(s) &=  K \frac{\theta (s)}{V_{a}(s)} = \frac{1}{2s(3s+5)} \label{eq:ee18btech11001_7}
 \end{align}
-
 From Error Constant  K = 500
-
 \begin{align}
    G(s) &=  \frac{\theta (s)}{V_{a}(s)} = 250 \frac{1}{s(3s+5)} \label{eq:ee18btech11001_8}
    \\
@@ -68,18 +73,17 @@ From Error Constant  K = 500
    M_{p} &= e^{\dfrac{-\zeta\pi}{\sqrt{1-\zeta^{2}}}} = 81.6\%
    \\
    \phi_{M} &= \tan^{-1}(\dfrac{2\zeta}{\sqrt{-2\zeta^2 + \sqrt{4\zeta^4 + 1}}})
+   \\
+   \phi_{max} &= 39.5\degree-7.35\degree+ \text{ correction factor}
+   \\
+   \phi_{max} &= 57\degree
 \end{align}
-
 \begin{table}[!ht]
 \centering
 \input{./tables/ee18btech11001.tex}
 \caption{Table of Specifications}
 \label{table:ee18btech11001}
 \end{table}
-
-$\phi_{max} = 39.5\degree-7.35\degree+$ correction factor
-
-$\phi_{max} = 57\degree$
 
 \textbf{Designing a lead compensator}
 \begin{align}
@@ -88,7 +92,8 @@ $\phi_{max} = 57\degree$
    \sin\phi_{max} &= \dfrac{a-1}{a+1}
    \\
    a &= 0.1
-   \\
+\end{align}
+\begin{align}
    |G(j\omega_{c})| &= \frac{1}{\sqrt{a}} = 10 dB
    \\
    \omega_{c} &= 5\degree \text{  (Refer figure \ref{fig:ee18btech11001_fig3})}
@@ -167,13 +172,14 @@ codes/ee18btech11001/ee18btech11001_2.py
   \caption{Performance of Lag Compensator}
   \label{fig:ee18btech11001_fig5}
 \end{figure}
+
 \begin{table}[!ht]
 \centering
 \input{./tables/ee18btech11001_2.tex}
 \caption{Performance comparison}
 \label{table:ee18btech11001_2}
 \end{table}
-The plots in figure \ref{fig:ee18btech11001_fig4} and \ref{fig:ee18btech11001_fig5} show the reduced overshoot and also reduced settling time for a unit step input function. 
+Figures \ref{fig:ee18btech11001_fig4} and \ref{fig:ee18btech11001_fig5} show the reduced overshoot \& settling time for unit step input. 
 
 This verifies that the designed lead and lag compensators work as per specifications. 
 %\end{enumerate}
