@@ -1,8 +1,8 @@
 \item A position control system is to be designed such that maximum peak overshoot is less than 25 \%.
 Further, appropriate error constant should be 50. For the motor to be used, load and torque
-speed curve is shown below, where, J1 = 2 kg-m2
-, J2 = 18 kg-m2
-, f1 = 2 N-m-s/rad, f2 = 36 N-ms/rad. (Although obvious, consider position as the controlled variable and armature voltage as
+speed curve is shown below, where, $J_{1}$ = 2 kg-m2
+, $J_{2}$ = 18 kg-m2
+, $f_{1}$ = 2 N-m-s/rad, $f_{2}$ = 36 N-ms/rad. (Although obvious, consider position as the controlled variable and armature voltage as
 the manipulated variable.). 
 \begin{enumerate}[label=(\roman*)]
 \item Design a lead compensator for the system.
@@ -19,12 +19,12 @@ the manipulated variable.).
 \solution
 Solving the system shown in \ref{fig:ee18btech11001_fig1},
 
-From load-torque curve of DC Motor
+From speed-torque curve of DC Motor in figure. Let $\vec{T_{m}}$ be the torque exerted by DC Motor.  \ref{fig:ee18btech11001_fig1}
 \begin{align}
    \vec{T_{m}} &=  2V_{a} - \frac{2}{3}\bm{\omega_{1}}
     \label{eq:ee18btech11001_1}
 \end{align}
-Let $\vec{T_{1}}$ , $\bm{\omega_{1}}$,$\bm{\theta_1{}}$  be the Torque, Angular velocity, Angular displacement on $J_{1}$
+Let $\vec{T_{1}}$ , $\bm{\omega_{1}}$,$\bm{\theta_1{}}$  be the Torque, Angular velocity, Angular displacement on $J_{1}$. Change in torque across ends = torque applied on load + viscous friction. On $J_{1}$ at one end torque $T_{m}$ is applied and at the other end $T_{1}$ exists.
 \begin{align}
     \vec{T_{m}} &= \vec{T_{1}} + J_{1}\bm{\Ddot{\theta_{1}}} + f_{1}\bm{\Dot{\theta_{1}}} 
     \label{eq:ee18btech11001_2}
@@ -34,9 +34,9 @@ Similarly for $J_{2}$
     \vec{T_{2}} &=  J_{2}\bm{\Ddot{\theta_{2}}} + f_{2}\bm{\Dot{\theta_{2}}} 
     \label{eq:ee18btech11001_3}
     \\
-    \vec{T_{2}} &= \frac{N_{2}}{N_{1}} \bm{T_{1}} \label{eq:ee18btech11001_4}
+    \vec{T_{2}} &= \frac{N_{2}}{N_{1}} \vec{T_{1}} \text{ (Gear Train Formula)} \label{eq:ee18btech11001_4}
     \\
-    \bm{\theta_{2}} &= \frac{N_{1}}{N_{2}} \bm{\theta_{1}} \label{eq:ee18btech11001_5}
+    \bm{\theta_{2}} &= \frac{N_{1}}{N_{2}} \bm{\theta_{1}} \text{ (Gear Train Formula)} \label{eq:ee18btech11001_5}
 \end{align}
     
 Converting to State Space model
@@ -49,18 +49,17 @@ Converting to State Space model
     \\
     \bm{\theta} &= \myvec{N_{2} & N_{1}} K
 \end{align}
-
-
 On solving the above State Space Model
 \begin{align}
     V_{a} &= 6\bm{\Ddot{\theta_{2}}} + 10\bm{\Dot{\theta_{2}}} \label{eq:ee18btech11001_6}
 \end{align}
-
 Taking Laplace transform
 \begin{align}
    G(s) &=  K \frac{\theta (s)}{V_{a}(s)} = \frac{1}{2s(3s+5)} \label{eq:ee18btech11001_7}
 \end{align}
+
 From Error Constant  K = 500
+
 \begin{align}
    G(s) &=  \frac{\theta (s)}{V_{a}(s)} = 250 \frac{1}{s(3s+5)} \label{eq:ee18btech11001_8}
    \\
@@ -82,8 +81,7 @@ $\phi_{max} = 39.5\degree-7.35\degree+$ correction factor
 
 $\phi_{max} = 57\degree$
 
-Designing a lead compensator
-Let 
+\textbf{Designing a lead compensator}
 \begin{align}
    G_{c}(s) &=  \frac{1}{a}\frac{s + \frac{1}{T}}{s + \frac{1}{aT}} (a<1) \label{eq:ee18btech11001_9}
    \\
@@ -95,16 +93,14 @@ Let
    \\
    \omega_{c} &= 5\degree \text{  (Refer figure \ref{fig:ee18btech11001_fig3})}
    \\
-   T &= \frac{1}{\omega_{c}\sqrt{a}}
-   \\
-   T &= 0.632
+   T &= \frac{1}{\omega_{c}\sqrt{a}} = 0.632
    \\
    G_{c}(s) &=  10 \frac{s + 1.6}{s + 16}
    \\
    G(s)G_{c}(s)  &= 2500 \dfrac{s+1.6}{s(3s+5)(s+16)} \label{eq:ee18btech11001_10}
 \end{align}
 
-Designing a lag compensator
+\textbf{Designing a lag compensator}
 \begin{align}
    G_{c}(s) &=  \frac{1}{b}\frac{s + \frac{1}{T}}{s + \frac{1}{bT}} (b>1)  \label{eq:ee18btech11001_11}
    \\
@@ -127,9 +123,7 @@ We place the zero at
 \begin{align} 
    \omega &= 0.2\omega_{c} = 0.35 rad/sec 
    \\
-   \frac{1}{T} &= 0.35
-   \\
-   T &= 2.85
+   \implies T &= 2.85
 \end{align}
 \begin{figure}[!ht]
 \centering
@@ -155,33 +149,31 @@ must give an attenuation of -26db at $\omega_{c}$
 
 
 \textbf{Performance Evaluation of compensators}
-\text{\linebreak The following code plots the performance curves}
+
+The following code plots the performance curves
 
 \begin{lstlisting}[frame=single]
 codes/ee18btech11001/ee18btech11001_2.py
 \end{lstlisting}
-
 \begin{figure}[!ht]
 \centering
     \includegraphics[width=\columnwidth]{./figs/ee18btech11001/ee18btech11001_4.eps}
   \caption{Performance of Lead Compensator}
   \label{fig:ee18btech11001_fig4}
 \end{figure}
-
-
 \begin{figure}[!ht]
 \centering
     \includegraphics[width=\columnwidth]{./figs/ee18btech11001/ee18btech11001_5.eps}
   \caption{Performance of Lag Compensator}
   \label{fig:ee18btech11001_fig5}
 \end{figure}
-
 \begin{table}[!ht]
 \centering
 \input{./tables/ee18btech11001_2.tex}
 \caption{Performance comparison}
 \label{table:ee18btech11001_2}
 \end{table}
+The plots in figure \ref{fig:ee18btech11001_fig4} and \ref{fig:ee18btech11001_fig5} show the reduced overshoot and also reduced settling time for a unit step input function. 
 
-
+This verifies that the designed lead and lag compensators work as per specifications. 
 %\end{enumerate}
