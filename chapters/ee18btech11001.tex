@@ -47,7 +47,13 @@ Similarly for $J_{2}$
     \\
     \bm{\theta_{2}} &= \frac{N_{1}}{N_{2}} \bm{\theta_{1}} \text{ (Gear Train Formula)} \label{eq:ee18btech11001_5}
 \end{align}
-    
+
+\begin{table}[!ht]
+\centering
+\input{./tables/ee18btech11001_4.tex}
+\caption{Vectors and Matrices}
+\label{table:ee18btech11001_3}
+\end{table}    
 Converting to State Space model
 \begin{align}
     \bm{\theta} &= \myvec{\bm{\theta_{1}} \\ \bm{\theta_{2}}}
@@ -77,7 +83,8 @@ From Error Constant  K = 500
    \zeta &= 0.0695
    \\
    M_{p} &= e^{\dfrac{-\zeta\pi}{\sqrt{1-\zeta^{2}}}} = 81.6\%
-   \\
+\end{align}
+\begin{align}
    \phi_{M} &= \tan^{-1}(\dfrac{2\zeta}{\sqrt{-2\zeta^2 + \sqrt{4\zeta^4 + 1}}})
    \\
    \phi_{max} &= 39.5\degree-7.35\degree+ \text{ correction factor}
@@ -187,5 +194,5 @@ codes/ee18btech11001/ee18btech11001_2.py
 \end{table}
 Figures \ref{fig:ee18btech11001_fig4} and \ref{fig:ee18btech11001_fig5} show the reduced overshoot \& settling time for unit step input. 
 
-This verifies that the designed lead and lag compensators work as per specifications. 
+\textbf{\newline This verifies that the designed lead and lag compensators work as per specifications.} 
 %\end{enumerate}
