@@ -21,6 +21,8 @@ Solving the system shown in \ref{fig:ee18btech11001_fig1},
 
 From speed-torque curve of DC Motor in figure. Let $\vec{T_{m}}$ be the torque exerted by DC Motor.  \ref{fig:ee18btech11001_fig1}
 \begin{align}
+   \vec{T_{m}} &=  \frac{\vec{K_{T}}}{R_{a}}V_{a} - \frac{\vec{K_{T}}.\vec{K_{v}}}{R_{a}}\bm{\omega_{1}}
+   \\
    \vec{T_{m}} &=  2V_{a} - \frac{2}{3}\bm{\omega_{1}}
     \label{eq:ee18btech11001_1}
 \end{align}
@@ -54,15 +56,19 @@ Converting to State Space model
     \\
     \Vec{T_{m}} &= 2V_{a} - \myvec{\frac{2}{3} & 0}\bm{\dot{\theta}}
     \\
-    \bm{\theta} &= \myvec{N_{2} & N_{1}} K
+    \bm{\theta} &= \myvec{N_{2} & 0 \\ 0& N_{1}} K
+\end{align}
+This is the state space model obtained
+\begin{align}
+    \bm{\Ddot{\theta}} &= \myvec{\frac{-13}{6} & 0 \\ 0 &\frac{-5}{3}}\bm{\Dot{\theta}} + \myvec{\frac{1}{2} \\ \frac{1}{6}}V_{a}
+    \\
+    \bm{\dot{\theta_{2}}} &= \myvec{0 \\ 1}\bm{\dot{\theta}} 
 \end{align}
 On solving the above State Space Model
 \begin{align}
-    V_{a} &= 6\bm{\Ddot{\theta_{2}}} + 10\bm{\Dot{\theta_{2}}} \label{eq:ee18btech11001_6}
-\end{align}
-Taking Laplace transform
-\begin{align}
-   G(s) &=  K \frac{\theta (s)}{V_{a}(s)} = \frac{1}{2s(3s+5)} \label{eq:ee18btech11001_7}
+    V_{a}(s) &= (6s+10)(s\theta_{2}(s)) \label{eq:ee18btech11001_6}
+    \\
+    G(s) &=  K \frac{\theta (s)}{V_{a}(s)} = \frac{K}{2s(3s+5)} \label{eq:ee18btech11001_7}
 \end{align}
 From Error Constant  K = 500
 \begin{align}
